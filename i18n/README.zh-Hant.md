@@ -2,11 +2,11 @@
 
 [English](../README.md) | [简体中文](README.zh-Hans.md) | [繁體中文](README.zh-Hant.md)
 
-這是英文主文件 `[README.md](../README.md)` 的繁體中文版本。倉庫同時相容 Claude 與 Codex，兩種宿主共用同一套股票研究框架。
+這是英文主文件 [README.md](../README.md) 的繁體中文版本。此倉庫同時相容 Claude 與 Codex，兩種宿主共用同一套股票研究框架。
 
 ## 專案概覽
 
-此專案提供兩條整合路徑：
+本專案提供兩條整合路徑：
 
 - Claude 側插件資產位於 `commands/trading-ideas/`
 - Codex 側插件資產位於 `.codex-plugin/` 與 `skills/equity-research/`
@@ -14,11 +14,11 @@
 共同能力包括：
 
 - 機構風格的投資摘要、評級與目標價
-- 基本面分析、同業比較與前瞻判斷
+- 基本面分析、同業對比與前瞻判斷
 - 近中期催化劑與事件驅動分析
 - Bull / Base / Bear 三情境估值
 - 風險評估、倉位建議與下行情境
-- 技術面、期權流、內線交易與市場定位
+- 技術面、期權流、內幕交易與市場定位
 
 ## 使用方式
 
@@ -33,6 +33,27 @@
 ### Codex
 
 將倉庫作為本地插件提供給 Codex 後，可透過 `equity-research` skill 觸發，例如：
+
+- `Generate an institutional-grade equity research report for AAPL.`
+- `Analyze NVDA with bull, base, and bear valuation scenarios.`
+
+## 直接從倉庫安裝到 Codex
+
+1. 先將倉庫 clone 到本地：
+
+```bash
+git clone https://github.com/vortezwohl/codex-equity-research-plugin.git
+cd codex-equity-research-plugin
+```
+
+2. 在 Codex 中將此倉庫根目錄加入為本地插件。
+
+Codex 會透過以下檔案發現此外掛與 skill：
+
+- `../.codex-plugin/plugin.json`
+- `../skills/equity-research/SKILL.md`
+
+3. 安裝後，可直接用股票研究類請求驗證，例如：
 
 - `Generate an institutional-grade equity research report for AAPL.`
 - `Analyze NVDA with bull, base, and bear valuation scenarios.`

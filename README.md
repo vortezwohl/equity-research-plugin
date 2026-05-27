@@ -60,6 +60,27 @@ Codex discovers the repository through the root plugin manifest:
 - `.codex-plugin/plugin.json`
 - `skills/equity-research/SKILL.md`
 
+#### Install Directly From This Repository
+
+1. Clone this repository locally:
+
+```bash
+git clone https://github.com/vortezwohl/codex-equity-research-plugin.git
+cd codex-equity-research-plugin
+```
+
+2. Add the repository root to Codex as a local plugin.
+
+Codex discovers the plugin and skill through:
+
+- `.codex-plugin/plugin.json`
+- `skills/equity-research/SKILL.md`
+
+3. Verify the installation by asking Codex for an equity research task, for example:
+
+- `Generate an institutional-grade equity research report for AAPL.`
+- `Analyze NVDA with bull, base, and bear valuation scenarios.`
+
 Once the repository is available as a local plugin, Codex can use the `equity-research` skill when the user asks for:
 
 - an equity research report on a public company or ticker
