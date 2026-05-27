@@ -156,11 +156,4 @@ codex-equity-research-plugin/
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-## Support
-
-- [Plugin documentation](PLUGIN.md)
-- [Command documentation](commands/README.md)
-- [Project documentation](docs/)
-- [Security policy](SECURITY.md)
-
 This project is for educational and research purposes only and is not financial advice. Always perform independent due diligence before making investment decisions.
