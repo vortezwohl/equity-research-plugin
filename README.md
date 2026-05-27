@@ -6,18 +6,19 @@
 ![Status: Active](https://img.shields.io/badge/Status-Active-green.svg)
 ![Hosts: Claude%20%2B%20Codex](https://img.shields.io/badge/Hosts-Claude%20%2B%20Codex-teal.svg)
 
-Professional equity research and trading analysis for Claude and Codex, designed to produce institutional-style reports with valuation scenarios, catalyst mapping, technical context, and risk-aware position sizing.
+Institutional-style equity research workflows for Claude and Codex, focused on valuation scenarios, catalyst mapping, technical context, and risk-aware position sizing.
 
 ## Overview
 
-This repository now supports two integration paths:
+This repository is the canonical source for the Equity Research plugin and skill:
 
-- Claude-compatible plugin assets under `commands/trading-ideas/`
-- Codex-compatible plugin assets under `.codex-plugin/` and `skills/equity-research/`
+- GitHub repository: `https://github.com/vortezwohl/equity-research`
+- Claude assets: `.claude-plugin/` and `commands/trading-ideas/`
+- Codex assets: `.codex-plugin/` and `skills/equity-research/`
 
-Both paths share the same research framework:
+Both integration paths share the same research framework:
 
-- Institutional-style executive summaries with explicit ratings and price targets
+- Executive summaries with explicit ratings and price targets
 - Fundamental analysis with exact metrics, peer context, and forward outlook
 - Catalyst mapping across near-term, medium-term, and event-driven scenarios
 - Bull, base, and bear valuation cases with probability weighting
@@ -28,73 +29,81 @@ Both paths share the same research framework:
 
 | Host | Integration | Entry Point |
 |------|-------------|-------------|
-| Claude | Slash-command plugin | `/trading-ideas:research <TICKER>` |
+| Claude | Marketplace plugin | `/trading-ideas:research <TICKER>` |
+| Claude | Local command file | `/trading-ideas <TICKER>` |
 | Codex | Local plugin skill | `equity-research` skill from this repository |
 
 ## Installation
 
 ### Claude Plugin Workflow
 
-1. Add the marketplace:
+Install the Claude plugin from this repository:
 
 ```bash
-/plugin marketplace add vortezwohl/codex-equity-research-plugin
+/plugin marketplace add vortezwohl/equity-research
+/plugin install trading-ideas@equity-research-marketplace
 ```
 
-2. Install the plugin:
-
-```bash
-/plugin install trading-ideas@claude-equity-research-marketplace
-```
-
-3. Verify the command is available:
+Verify the command is available:
 
 ```bash
 /help
 ```
 
-### Codex Plugin Workflow
-
-Codex discovers the repository through the root plugin manifest:
-
-- `.codex-plugin/plugin.json`
-- `skills/equity-research/SKILL.md`
-
-#### Install Directly From This Repository
-
-1. Clone this repository locally:
+When installed through the plugin system, use:
 
 ```bash
-git clone https://github.com/vortezwohl/codex-equity-research-plugin.git
-cd codex-equity-research-plugin
+/trading-ideas:research AAPL
 ```
 
-2. Add the repository root to Codex as a local plugin.
+### Claude Local Command Workflow
 
-Codex discovers the plugin and skill through:
+If you prefer a plain command file instead of the plugin marketplace flow:
+
+```bash
+curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/vortezwohl/equity-research/main/commands/trading-ideas/commands/research.md
+```
+
+After this manual installation, use:
+
+```bash
+/trading-ideas AAPL
+```
+
+### Codex Plugin Workflow
+
+Codex discovers this repository through the root plugin manifest and local skill:
 
 - `.codex-plugin/plugin.json`
 - `skills/equity-research/SKILL.md`
 
-3. Verify the installation by asking Codex for an equity research task, for example:
+Install from this repository:
+
+```bash
+git clone https://github.com/vortezwohl/equity-research.git
+cd equity-research
+```
+
+Then add the repository root to Codex as a local plugin. Once the repository is available locally, Codex can trigger the `equity-research` skill for prompts such as:
 
 - `Generate an institutional-grade equity research report for AAPL.`
 - `Analyze NVDA with bull, base, and bear valuation scenarios.`
-
-Once the repository is available as a local plugin, Codex can use the `equity-research` skill when the user asks for:
-
-- an equity research report on a public company or ticker
-- a BUY, SELL, or HOLD recommendation with a price target
-- bull, base, and bear valuation scenarios
-- catalysts, risks, or institutional-style stock commentary
+- `Compare TSLA fundamentals, catalysts, and risks.`
 
 ## Usage Examples
 
-### Claude
+### Claude Plugin
 
 ```bash
 /trading-ideas:research AAPL
 /trading-ideas:research NVDA --detailed
+```
+
+### Claude Local Command
+
+```bash
+/trading-ideas AAPL
+/trading-ideas NVDA --detailed
 ```
 
 ### Codex
@@ -138,7 +147,7 @@ Insider transactions, buybacks, and ownership changes.
 ## Repository Structure
 
 ```text
-codex-equity-research-plugin/
+equity-research/
 ├── .claude-plugin/
 │   └── marketplace.json
 ├── .codex-plugin/
@@ -168,10 +177,10 @@ codex-equity-research-plugin/
 
 ## Notes for Maintainers
 
-- Keep the Claude command prompt and Codex skill aligned when the research workflow changes.
-- Preserve both integration paths unless the project explicitly drops one host.
+- Keep Claude command prompts and Codex skill instructions aligned when the research workflow changes.
+- Treat `vortezwohl/equity-research` as the only public source of installation and documentation.
 - Avoid embedding machine-specific local paths in repository files or plugin metadata.
-- Keep documentation in English as the source of truth, then sync the two translated README files under `i18n/`.
+- Keep the two translated README files under `i18n/` in sync with this document.
 
 ## License
 

@@ -1,5 +1,5 @@
 {
-  "name": "codex-equity-research-plugin",
+  "name": "equity-research",
   "version": "1.0.1",
   "description": "Institutional-grade equity research workflows for Claude and Codex.",
   "author": {
@@ -7,8 +7,8 @@
     "email": "vortez.wohl@gmail.com",
     "url": "https://github.com/vortezwohl"
   },
-  "homepage": "https://github.com/vortezwohl/codex-equity-research-plugin",
-  "repository": "https://github.com/vortezwohl/codex-equity-research-plugin",
+  "homepage": "https://github.com/vortezwohl/equity-research",
+  "repository": "https://github.com/vortezwohl/equity-research",
   "license": "MIT",
   "keywords": [
     "finance",
@@ -29,9 +29,9 @@
       "Write",
       "Web research"
     ],
-    "websiteURL": "https://github.com/vortezwohl/codex-equity-research-plugin",
-    "privacyPolicyURL": "https://github.com/vortezwohl/codex-equity-research-plugin/blob/main/SECURITY.md",
-    "termsOfServiceURL": "https://github.com/vortezwohl/codex-equity-research-plugin/blob/main/LICENSE",
+    "websiteURL": "https://github.com/vortezwohl/equity-research",
+    "privacyPolicyURL": "https://github.com/vortezwohl/equity-research/blob/main/SECURITY.md",
+    "termsOfServiceURL": "https://github.com/vortezwohl/equity-research/blob/main/LICENSE",
     "brandColor": "#0F766E",
     "defaultPrompt": [
       "Generate an institutional-grade equity research report for AAPL.",

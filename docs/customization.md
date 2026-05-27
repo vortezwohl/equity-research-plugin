@@ -1,10 +1,10 @@
 # Customization Guide
 
-Complete guide for customizing Claude Equity Research to meet specific analysis needs and preferences.
+Complete guide for customizing the Equity Research plugin to meet specific analysis needs and preferences.
 
 ## Overview
 
-Claude Equity Research is designed to be highly customizable while maintaining professional standards. This guide covers command modifications, sector-specific adaptations, and advanced configuration options.
+The Equity Research plugin is designed to be highly customizable while maintaining professional standards. This guide covers command modifications, sector-specific adaptations, and advanced configuration options.
 
 ## Command Customization
 
@@ -428,7 +428,7 @@ time (echo "/trading-ideas AAPL" | claude-code)
 ### Getting Help
 - Review [installation guide](installation.md) for setup issues
 - Check [methodology](methodology.md) for analysis framework
-- Submit issues to [GitHub repository](https://github.com/quant-sentiment-ai/claude-equity-research/issues)
+- Submit issues to [GitHub repository](https://github.com/vortezwohl/equity-research/issues)
 - Join community discussions for best practices sharing
 
-This customization guide enables you to tailor Claude Equity Research to your specific investment process while maintaining professional analysis standards.
+This customization guide enables you to tailor the Equity Research plugin to your specific investment process while maintaining professional analysis standards.

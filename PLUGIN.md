@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Claude Equity Research** plugin brings institutional-grade equity analysis directly into your Claude Code workflow. Generate comprehensive research reports with a single slash command - no configuration, API keys, or manual setup required.
+The **Equity Research** plugin brings institutional-grade equity analysis directly into your Claude Code workflow. Generate comprehensive research reports with a single slash command and install it directly from `vortezwohl/equity-research`.
 
 ### Why Use This Plugin?
 
@@ -28,14 +28,14 @@ The **Claude Equity Research** plugin brings institutional-grade equity analysis
 
 ```bash
 # Step 1: Add the marketplace
-/plugin marketplace add quant-sentiment-ai/claude-equity-research
+/plugin marketplace add vortezwohl/equity-research
 
 # Step 2: Open the plugin menu
 /plugin
 
 # Step 3: Browse and install
 # - Select "Browse Plugins"
-# - Find "claude-equity-research"
+# - Find "equity-research"
 # - Choose "Install now"
 ```
 
@@ -43,8 +43,8 @@ The **Claude Equity Research** plugin brings institutional-grade equity analysis
 
 ```bash
 # Add marketplace and install in one flow
-/plugin marketplace add quant-sentiment-ai/claude-equity-research
-/plugin install trading-ideas@claude-equity-research-marketplace
+/plugin marketplace add vortezwohl/equity-research
+/plugin install trading-ideas@equity-research-marketplace
 ```
 
 ### Verify Installation
@@ -235,13 +235,13 @@ To automatically install this plugin for all team members who trust your reposit
 {
   "extraKnownMarketplaces": [
     {
-      "url": "https://github.com/quant-sentiment-ai/claude-equity-research"
+      "url": "https://github.com/vortezwohl/equity-research"
     }
   ],
   "extraKnownPlugins": [
     {
-      "name": "claude-equity-research",
-      "marketplace": "quant-sentiment-ai/claude-equity-research"
+      "name": "equity-research",
+      "marketplace": "vortezwohl/equity-research"
     }
   ]
 }
@@ -261,7 +261,7 @@ When team members trust the repository folder, Claude Code will automatically pr
 1. Restart Claude Code (recommended)
 2. Verify installation: `/plugin marketplace list`
 3. Check plugin is enabled: `/plugin`
-4. Reinstall: `/plugin uninstall trading-ideas@claude-equity-research-marketplace` then `/plugin install trading-ideas@claude-equity-research-marketplace`
+4. Reinstall: `/plugin uninstall trading-ideas@equity-research-marketplace` then `/plugin install trading-ideas@equity-research-marketplace`
 
 ### Limited Data for Small-Cap Stocks
 
@@ -309,22 +309,22 @@ When team members trust the repository folder, Claude Code will automatically pr
 
 ### Enable/Disable Plugin
 ```bash
-/plugin enable trading-ideas@claude-equity-research-marketplace
-/plugin disable trading-ideas@claude-equity-research-marketplace
+/plugin enable trading-ideas@equity-research-marketplace
+/plugin disable trading-ideas@equity-research-marketplace
 ```
 
 ### Uninstall Plugin
 ```bash
-/plugin uninstall trading-ideas@claude-equity-research-marketplace
+/plugin uninstall trading-ideas@equity-research-marketplace
 ```
 
 ### Update Plugin
 ```bash
 # Uninstall old version
-/plugin uninstall trading-ideas@claude-equity-research-marketplace
+/plugin uninstall trading-ideas@equity-research-marketplace
 
 # Reinstall latest version
-/plugin install trading-ideas@claude-equity-research-marketplace
+/plugin install trading-ideas@equity-research-marketplace
 ```
 
 ---
@@ -398,17 +398,17 @@ The creators, maintainers, and distributors of this plugin assume no liability f
 ## Support & Community
 
 ### Documentation
-- **Main README**: [Repository README](https://github.com/quant-sentiment-ai/claude-equity-research/blob/main/README.md)
-- **Methodology Guide**: [docs/methodology.md](https://github.com/quant-sentiment-ai/claude-equity-research/blob/main/docs/methodology.md)
-- **Customization Guide**: [docs/customization.md](https://github.com/quant-sentiment-ai/claude-equity-research/blob/main/docs/customization.md)
+- **Main README**: [Repository README](https://github.com/vortezwohl/equity-research/blob/main/README.md)
+- **Methodology Guide**: [docs/methodology.md](https://github.com/vortezwohl/equity-research/blob/main/docs/methodology.md)
+- **Customization Guide**: [docs/customization.md](https://github.com/vortezwohl/equity-research/blob/main/docs/customization.md)
 
 ### Get Help
-- **Report Issues**: [GitHub Issues](https://github.com/quant-sentiment-ai/claude-equity-research/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/quant-sentiment-ai/claude-equity-research/discussions)
+- **Report Issues**: [GitHub Issues](https://github.com/vortezwohl/equity-research/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/vortezwohl/equity-research/discussions)
 - **Feature Requests**: Submit via GitHub Issues with "enhancement" label
 
 ### Contributing
-We welcome contributions! See [Contributing Guidelines](https://github.com/quant-sentiment-ai/claude-equity-research/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions through the current repository issue tracker and pull requests.
 
 ---
 
@@ -417,7 +417,7 @@ We welcome contributions! See [Contributing Guidelines](https://github.com/quant
 ### 1.0.1 (Current)
 - Fix plugin command registration (the command is now loaded by the plugin system, not just via manual install)
 - Rename command file to `research.md` so the invocation reads `/trading-ideas:research TICKER` instead of the doubled `/trading-ideas:trading-ideas`
-- Fix incorrect install command in docs (`claude-equity-research@quant-sentiment-ai` → `trading-ideas@claude-equity-research-marketplace`)
+- Fix incorrect install command in docs so the plugin installs from `vortezwohl/equity-research`
 
 ### 1.0.0
 - Initial public release
@@ -430,8 +430,8 @@ We welcome contributions! See [Contributing Guidelines](https://github.com/quant
 
 ## License
 
-This plugin is licensed under the MIT License. See [LICENSE](https://github.com/quant-sentiment-ai/claude-equity-research/blob/main/LICENSE) for details.
+This plugin is licensed under the MIT License. See [LICENSE](https://github.com/vortezwohl/equity-research/blob/main/LICENSE) for details.
 
 ---
 
-**Built for Claude Code** | [Report Issues](https://github.com/quant-sentiment-ai/claude-equity-research/issues) | [View Source](https://github.com/quant-sentiment-ai/claude-equity-research)
+**Built for Claude Code** | [Report Issues](https://github.com/vortezwohl/equity-research/issues) | [View Source](https://github.com/vortezwohl/equity-research)

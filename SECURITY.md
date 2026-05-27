@@ -2,14 +2,14 @@
 
 ## Supported Versions
 
-The claude-equity-research project maintains security support for the following versions:
+The `vortezwohl/equity-research` project maintains security support for the following versions:
 
 | Version | Supported          |
 | ------- | ------------------ |
 | Latest  | :white_check_mark: |
 | Previous| :x:                |
 
-As this is a Claude Code command-based tool, we recommend always using the latest version from the main branch.
+As this repository provides both Claude and Codex integrations, we recommend always using the latest version from the `main` branch.
 
 ## Reporting a Vulnerability
 
@@ -17,7 +17,7 @@ We take security seriously for this financial analysis tool. If you discover a s
 
 ### How to Report
 
-**Email**: quant.sentiment.ai@gmail.com
+**Email**: vortez.wohl@gmail.com
 
 **Subject**: [SECURITY] Brief description of the issue
 

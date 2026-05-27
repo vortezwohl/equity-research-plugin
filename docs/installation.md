@@ -1,252 +1,110 @@
 # Installation Guide
 
-Complete setup instructions for Claude Equity Research integration with Claude Code.
+Complete setup instructions for installing the Equity Research plugin and command from `vortezwohl/equity-research`.
 
-## Quick Installation
+## Installation Paths
 
-### Option 1: Direct Download (Recommended)
+This repository supports three installation paths:
+
+1. Claude marketplace plugin
+2. Claude local command file
+3. Codex local plugin skill
+
+## Claude Marketplace Plugin
+
+Recommended when you want the command managed by Claude's plugin system.
+
 ```bash
-# Install the trading-ideas command system-wide
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
-
-# Verify installation
-ls ~/.claude/commands/trading-ideas.md
-
-# Test the command
-# (Open new Claude Code session and try: /trading-ideas AAPL)
+/plugin marketplace add vortezwohl/equity-research
+/plugin install trading-ideas@equity-research-marketplace
 ```
 
-### Option 2: Repository Clone
-```bash
-# Clone the full repository
-git clone https://github.com/quant-sentiment-ai/claude-equity-research.git
-cd claude-equity-research
+Verification:
 
-# Copy command to Claude Code
+```bash
+/help
+/trading-ideas:research AAPL
+```
+
+## Claude Local Command File
+
+Recommended when you only need a standalone local command.
+
+### Direct Download
+
+```bash
+curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/vortezwohl/equity-research/main/commands/trading-ideas/commands/research.md
+```
+
+### Repository Clone
+
+```bash
+git clone https://github.com/vortezwohl/equity-research.git
+cd equity-research
 cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
-
-# Optional: Set up development environment
-cp config/config.example.json config/config.json
 ```
+
+Verification:
+
+```bash
+/trading-ideas AAPL
+```
+
+## Codex Local Plugin Skill
+
+Codex discovers the plugin through the repository root:
+
+- `.codex-plugin/plugin.json`
+- `skills/equity-research/SKILL.md`
+
+Install locally:
+
+```bash
+git clone https://github.com/vortezwohl/equity-research.git
+cd equity-research
+```
+
+Then add the repository root to Codex as a local plugin and test with a prompt such as:
+
+- `Generate an institutional-grade equity research report for AAPL.`
+- `Analyze NVDA with bull, base, and bear valuation scenarios.`
 
 ## Prerequisites
 
 ### Required
-- **Claude Code CLI**: Latest version from [claude.ai/code](https://claude.ai/code)
-- **Internet Connection**: For real-time data retrieval
-- **Terminal Access**: Command-line interface
+
+- Claude Code or Codex
+- Internet access for market and company research
+- Git if you plan to clone the repository
 
 ### Optional
-- **Git**: For repository cloning and updates
-- **Text Editor**: For command customization
 
-## Verification
-
-### Test Basic Functionality
-```bash
-# Start Claude Code session
-claude-code
-
-# Test the command
-/trading-ideas AAPL
-```
-
-**Expected Output**: Comprehensive equity research report with:
-- Executive Summary with BUY/SELL/HOLD recommendation
-- Fundamental analysis with specific metrics
-- Price target and upside/downside calculation
-- Risk assessment and position sizing
-
-### Verify Command Features
-```bash
-# Test enhanced analysis
-/trading-ideas HOOD --detailed
-
-# Test different sectors
-/trading-ideas JPM    # Financial services
-/trading-ideas NVDA   # Technology/AI
-/trading-ideas TSLA   # Growth/automotive
-```
-
-## Directory Structure
-
-After installation, your Claude Code setup should include:
-
-```
-~/.claude/
-├── commands/
-│   └── trading-ideas.md     # ✓ Main analysis command
-├── settings.local.json      # Your Claude Code settings
-└── [other directories...]
-
-# Optional: Full repository structure
-claude-equity-research/
-├── README.md
-├── LICENSE
-├── commands/
-│   ├── trading-ideas.md
-│   └── README.md
-├── config/
-├── docs/
-├── examples/
-└── utils/
-```
-
-## Configuration
-
-### Default Settings
-The command works out-of-the-box with default settings:
-- 12-month analysis timeframe
-- Moderate risk assessment
-- Institutional-grade formatting
-- Comprehensive disclaimer inclusion
-
-### Custom Configuration (Optional)
-```bash
-# Create custom config
-mkdir -p ~/.claude/equity-research
-cp claude-equity-research/config/config.example.json ~/.claude/equity-research/config.json
-
-# Edit configuration
-vim ~/.claude/equity-research/config.json
-```
-
-**Configuration Options**:
-- Analysis timeframes (1m, 3m, 6m, 12m)
-- Risk levels (conservative, moderate, aggressive)
-- Output formats (terminal, markdown, detailed)
-- Position sizing parameters
+- A text editor if you want to customize the local command file
 
 ## Troubleshooting
 
-### Command Not Found
-```bash
-# Check if file exists
-ls -la ~/.claude/commands/trading-ideas.md
+### Claude Plugin Command Not Found
 
-# If missing, reinstall
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
+- Run `/help` to confirm the plugin is registered
+- Reinstall with `/plugin install trading-ideas@equity-research-marketplace`
+- Restart the Claude session if the command list does not refresh
 
-# Check file permissions
-chmod 644 ~/.claude/commands/trading-ideas.md
+### Claude Local Command Not Found
 
-# Restart Claude Code session
-```
+- Check that `~/.claude/commands/trading-ideas.md` exists
+- Re-download the file from `vortezwohl/equity-research`
+- Start a new Claude session after replacing the command file
 
-### Incomplete Analysis
-**Symptoms**: Missing sections or error messages
+### Codex Skill Not Triggering
 
-**Solutions**:
-1. **Check Internet Connection**: Command requires web access
-2. **Verify Ticker Symbol**: Use valid stock tickers (1-5 letters)
-3. **Try Different Ticker**: Some stocks may have limited data
-4. **Check Claude Code Version**: Ensure latest version
+- Confirm the repository root was added, not only a subdirectory
+- Check that `.codex-plugin/plugin.json` and `skills/equity-research/SKILL.md` are both present
+- Retry with an explicit stock research request instead of a vague finance prompt
 
-```bash
-# Test with known-good ticker
-/trading-ideas AAPL
+## Related Documents
 
-# Check Claude Code version
-claude-code --version
-```
+- [Main README](../README.md)
+- [Claude command guide](../commands/README.md)
+- [Customization guide](customization.md)
 
-### Format Issues
-**Symptoms**: Inconsistent output formatting
-
-**Solutions**:
-1. **Verify Command File**: Ensure clean installation
-2. **Check for Customizations**: Reset to default if modified
-3. **Restart Session**: Commands reload on new sessions
-
-```bash
-# Restore default command
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
-
-# Start fresh session
-exit  # Exit current Claude Code session
-claude-code  # Start new session
-```
-
-## Updates
-
-### Manual Update
-```bash
-# Download latest version
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
-
-# Verify update
-head -10 ~/.claude/commands/trading-ideas.md
-```
-
-### Git-based Update (if using repository)
-```bash
-cd claude-equity-research
-git pull origin main
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
-```
-
-### Version Check
-```bash
-# Check command version (look for version info in file header)
-grep -i "version\|updated" ~/.claude/commands/trading-ideas.md
-```
-
-## Advanced Setup
-
-### Multiple Environments
-```bash
-# Development setup
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas-dev.md
-# Edit development version...
-
-# Production setup  
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
-```
-
-### Custom Analysis Templates
-```bash
-# Create custom sector-specific commands
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/tech-analysis.md
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/biotech-analysis.md
-
-# Customize each for sector-specific metrics
-```
-
-### Integration with Workflows
-```bash
-# Batch analysis script
-#!/bin/bash
-tickers=("AAPL" "GOOGL" "MSFT" "TSLA")
-for ticker in "${tickers[@]}"; do
-    echo "Analyzing $ticker..."
-    echo "/trading-ideas $ticker" | claude-code
-done
-```
-
-## Support
-
-### Getting Help
-- 📖 [Documentation](https://github.com/quant-sentiment-ai/claude-equity-research/tree/main/docs)
-- 🐛 [Report Issues](https://github.com/quant-sentiment-ai/claude-equity-research/issues)
-- 💬 [Discussions](https://github.com/quant-sentiment-ai/claude-equity-research/discussions)
-
-### Common Issues
-1. **Permission Denied**: Run `chmod 644 ~/.claude/commands/trading-ideas.md`
-2. **Network Errors**: Check internet connection and try again
-3. **Invalid Ticker**: Use proper stock ticker symbols (AAPL, not Apple)
-4. **Missing Data**: Some newer/smaller companies may have limited coverage
-
-### Debug Mode
-```bash
-# Enable verbose output for troubleshooting
-export CLAUDE_DEBUG=1
-/trading-ideas AAPL
-```
-
----
-
-**Next Steps**: 
-- Try your first analysis: `/trading-ideas AAPL`
-- Review [Usage Examples](../examples/)
-- Read [Methodology](methodology.md) for analysis framework details
-- Explore [Customization Guide](customization.md) for advanced features
+This project is for educational and research purposes only and is not financial advice.

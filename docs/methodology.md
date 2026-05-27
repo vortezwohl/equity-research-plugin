@@ -1,6 +1,6 @@
 # Analysis Methodology
 
-Comprehensive framework for institutional-grade equity research using Claude Equity Research.
+Comprehensive framework for institutional-grade equity research using the Equity Research plugin.
 
 ## Overview
 
@@ -283,4 +283,4 @@ Our analysis methodology combines quantitative financial analysis with qualitati
 - Professional advice requirements
 - Regulatory compliance considerations
 
-This methodology ensures that Claude Equity Research delivers analysis that meets institutional standards while remaining accessible and actionable for individual investors.
+This methodology ensures that the Equity Research plugin delivers analysis that meets institutional standards while remaining accessible and actionable for individual investors.

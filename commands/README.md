@@ -1,106 +1,61 @@
-# Claude Code Commands
+# Claude Command Guide
 
-This directory contains the core `/trading-ideas` command for Claude Code integration.
+This directory contains the `/trading-ideas` local command for Claude Code.
 
 ## Installation
 
-### Quick Installation (Recommended)
+### Quick Install
+
+Download the command directly from the current repository:
+
 ```bash
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
+curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/vortezwohl/equity-research/main/commands/trading-ideas/commands/research.md
 ```
 
-### Manual Installation
-```bash
-# Clone the repository
-git clone https://github.com/quant-sentiment-ai/claude-equity-research.git
+### Manual Install
 
-# Copy command to Claude Code
-cp claude-equity-research/commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
+```bash
+git clone https://github.com/vortezwohl/equity-research.git
+cd equity-research
+cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
 ```
 
 ## Usage
 
-Once installed, the command is available system-wide in any Claude Code session:
+When installed as a local command file, invoke it as:
 
 ```bash
-/trading-ideas AAPL          # Apple Inc. analysis
-/trading-ideas HOOD --detailed   # Enhanced Robinhood analysis
-/trading-ideas TSLA          # Tesla comprehensive research
+/trading-ideas AAPL
+/trading-ideas NVDA --detailed
 ```
 
-## Command Features
-
-### Core Analysis Sections
-1. **Executive Summary** - BUY/SELL/HOLD with price target
-2. **Fundamental Analysis** - Financial metrics and peer comparison
-3. **Catalyst Analysis** - Near-term and medium-term drivers
-4. **Valuation & Price Targets** - Bull/base/bear scenarios
-5. **Risk Assessment** - Company and macro risks with position sizing
-6. **Technical Context** - Support/resistance and options flow
-7. **Market Positioning** - Sector rotation and relative strength
-8. **Insider Signals** - Executive trading and institutional activity
-
-### Professional Standards
-- Institutional-grade formatting
-- Specific financial metrics with percentages
-- Price targets with upside/downside calculations
-- Position sizing recommendations (1-5% typical)
-- Comprehensive legal disclaimers
-
-### Data Requirements
-- Real-time web search integration
-- Parallel search strategy for comprehensive coverage
-- Analyst firm citations and price target sources
-- Specific dollar amounts for insider trading
-- Technical levels with exact support/resistance prices
-
-## Customization
-
-To modify the command:
-
-1. Edit `~/.claude/commands/trading-ideas.md`
-2. Adjust analysis sections or add new metrics
-3. Modify risk assessment criteria
-4. Update disclaimer language if needed
-
-The command will automatically reload in new Claude Code sessions.
-
-## Troubleshooting
-
-### Command Not Found
-- Verify file exists: `ls ~/.claude/commands/trading-ideas.md`
-- Check file permissions: `chmod 644 ~/.claude/commands/trading-ideas.md`
-- Restart Claude Code session
-
-### Incomplete Analysis
-- Ensure internet connectivity for web searches
-- Verify ticker symbol format (1-5 letters)
-- Check that WebSearch and WebFetch tools are available
-
-### Format Issues
-- Command template enforces consistent formatting
-- Review frontmatter configuration if customized
-- Ensure YAML syntax is valid in frontmatter
-
-## Updates
-
-To update the command with latest improvements:
+If you install through Claude's plugin marketplace instead, the namespaced command is:
 
 ```bash
-# Download latest version
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
+/trading-ideas:research AAPL
+```
 
-# Verify update
-head -10 ~/.claude/commands/trading-ideas.md
+## What This Command Produces
+
+- Executive summary with BUY / SELL / HOLD framing
+- Fundamental analysis with concrete metrics
+- Catalyst analysis across multiple time horizons
+- Bull, base, and bear valuation scenarios
+- Risk assessment with position sizing guidance
+- Technical context, options flow, and insider activity
+
+## Updating
+
+Refresh the local command from the canonical repository:
+
+```bash
+curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/vortezwohl/equity-research/main/commands/trading-ideas/commands/research.md
 ```
 
 ## Support
 
-For issues or feature requests:
-- [GitHub Issues](https://github.com/quant-sentiment-ai/claude-equity-research/issues)
-- [Discussions](https://github.com/quant-sentiment-ai/claude-equity-research/discussions)
-- [Documentation](../docs/)
+- Repository: [vortezwohl/equity-research](https://github.com/vortezwohl/equity-research)
+- Issues: [GitHub Issues](https://github.com/vortezwohl/equity-research/issues)
+- Documentation: [docs](../docs/)
 
----
-
-**Legal Notice**: This command generates educational content only. Not financial advice. Always consult qualified professionals before making investment decisions.
+This command is for educational and research purposes only and is not financial advice.
