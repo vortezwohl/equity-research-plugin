@@ -280,26 +280,9 @@ git checkout -b feature/your-enhancement
 # Submit pull request with detailed description
 ```
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=quant-sentiment-ai/claude-equity-research&type=date&legend=top-left)](https://www.star-history.com/#quant-sentiment-ai/claude-equity-research&type=date&legend=top-left)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support & Community
-
-- 📖 [Documentation](docs/)
-- 🐛 [Report Issues](https://github.com/quant-sentiment-ai/claude-equity-research/issues)
-- 💬 [Discussions](https://github.com/quant-sentiment-ai/claude-equity-research/discussions)
-- 🔄 [Changelog](CHANGELOG.md)
-
-## Acknowledgments
-
-- Built for [Claude Code](https://claude.ai/code) - Anthropic's official CLI
-- Inspired by institutional equity research standards
-- Community-driven development and feedback
 
 ---
 
