@@ -1,0 +1,42 @@
+{
+  "name": "codex-equity-research-plugin",
+  "version": "1.0.1",
+  "description": "Institutional-grade equity research workflows for Claude and Codex.",
+  "author": {
+    "name": "vortezwohl",
+    "email": "vortez.wohl@gmail.com",
+    "url": "https://github.com/vortezwohl"
+  },
+  "homepage": "https://github.com/vortezwohl/codex-equity-research-plugin",
+  "repository": "https://github.com/vortezwohl/codex-equity-research-plugin",
+  "license": "MIT",
+  "keywords": [
+    "finance",
+    "equity-research",
+    "trading",
+    "stock-analysis",
+    "investment-research"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Equity Research Plugin",
+    "shortDescription": "Generate institutional-grade equity research reports.",
+    "longDescription": "Adds a reusable Codex skill for valuation scenarios, catalyst mapping, risk assessment, and market positioning across public equities.",
+    "developerName": "vortezwohl",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write",
+      "Web research"
+    ],
+    "websiteURL": "https://github.com/vortezwohl/codex-equity-research-plugin",
+    "privacyPolicyURL": "https://github.com/vortezwohl/codex-equity-research-plugin/blob/main/SECURITY.md",
+    "termsOfServiceURL": "https://github.com/vortezwohl/codex-equity-research-plugin/blob/main/LICENSE",
+    "brandColor": "#0F766E",
+    "defaultPrompt": [
+      "Generate an institutional-grade equity research report for AAPL.",
+      "Analyze NVDA with bull, base, and bear valuation scenarios.",
+      "Compare TSLA fundamentals, risks, and catalysts."
+    ]
+  }
+}

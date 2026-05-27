@@ -1,289 +1,166 @@
-# Claude Equity Research
+# Equity Research Plugin
 
-[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-blue?logo=anthropic&logoColor=white)](https://claude.ai/claude-code)
+[English](README.md) | [简体中文](i18n/README.zh-Hans.md) | [繁體中文](i18n/README.zh-Hant.md)
+
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Claude Code Required](https://img.shields.io/badge/Claude_Code-Required-blue.svg)
 ![Status: Active](https://img.shields.io/badge/Status-Active-green.svg)
+![Hosts: Claude%20%2B%20Codex](https://img.shields.io/badge/Hosts-Claude%20%2B%20Codex-teal.svg)
 
->🤖 Built entirely with Claude Code - demonstrating AI-native development workflows for professional-grade financial tools.
+Professional equity research and trading analysis for Claude and Codex, designed to produce institutional-style reports with valuation scenarios, catalyst mapping, technical context, and risk-aware position sizing.
 
-Professional equity research and trading analysis powered by Claude AI, delivering institutional-grade investment insights with Goldman Sachs-style formatting and comprehensive risk assessment.
+## Overview
 
-## What It Does
+This repository now supports two integration paths:
 
-- **Institutional-Grade Analysis**: Generates professional equity research reports matching Wall Street standards
-- **AI-Powered Intelligence**: Leverages Claude AI for comprehensive fundamental and technical analysis
-- **Real-Time Data Integration**: Pulls live market data, earnings reports, and analyst coverage
-- **Risk-Adjusted Recommendations**: Provides buy/sell/hold ratings with specific price targets and position sizing
-- **Advanced Market Intelligence**: Includes options flow analysis, insider trading activity, and sector positioning
+- Claude-compatible plugin assets under `commands/trading-ideas/`
+- Codex-compatible plugin assets under `.codex-plugin/` and `skills/equity-research/`
 
-## Key Features
+Both paths share the same research framework:
 
-### Core Analysis Framework
-- **Executive Summary**: Investment thesis with price target and 12-month timeframe
-- **Fundamental Analysis**: Revenue growth, margins, peer comparisons, and forward estimates
-- **Catalyst Analysis**: Near-term and medium-term market drivers with specific dates
-- **Valuation Models**: Bull/base/bear scenarios with probability weighting
-- **Risk Assessment**: Company-specific and macro risks with position sizing guidance (1-5%)
-- **Technical Context**: Support/resistance levels, momentum indicators, and volume analysis
+- Institutional-style executive summaries with explicit ratings and price targets
+- Fundamental analysis with exact metrics, peer context, and forward outlook
+- Catalyst mapping across near-term, medium-term, and event-driven scenarios
+- Bull, base, and bear valuation cases with probability weighting
+- Risk assessment, position sizing guidance, and downside framing
+- Technical context, options flow, insider activity, and market positioning
 
-### Enhanced Intelligence Features
-- **Options Flow Analysis**: Unusual activity, put/call ratios, implied volatility trends
-- **Insider Activity Monitoring**: Executive buying/selling patterns with dollar amounts
-- **Sector Positioning**: Rotation trends and relative strength vs market indices
-- **ESG & Governance**: Sustainability scores and regulatory compliance assessment
+## Compatibility
 
-### Professional Standards
-- **Institutional Terminology**: EBITDA, P/E ratios, EV/Sales, conviction levels
-- **Probability Weighting**: Bull/base/bear scenarios with percentage allocations
-- **Legal Protection**: Comprehensive disclaimers for educational use
-- **Data Sourcing**: Real-time web search with analyst firm citations
+| Host | Integration | Entry Point |
+|------|-------------|-------------|
+| Claude | Slash-command plugin | `/trading-ideas:research <TICKER>` |
+| Codex | Local plugin skill | `equity-research` skill from this repository |
 
-## Installation & Setup
+## Installation
 
-### Prerequisites
-- Claude Code CLI (version 2.0.11 or higher)
-- Claude paid subscription (Pro, Team, or Enterprise)
-- Internet connection for real-time data retrieval
+### Claude Plugin Workflow
 
-### Installation via Claude Code Plugin (Recommended)
+1. Add the marketplace:
 
-**Quick Install - Interactive Menu:**
 ```bash
-# Step 1: Add the marketplace
-/plugin marketplace add quant-sentiment-ai/claude-equity-research
-
-# Step 2: Open the plugin menu
-/plugin
-
-# Step 3: Select "Browse Plugins" → find "claude-equity-research" → "Install now"
+/plugin marketplace add vortezwohl/codex-equity-research-plugin
 ```
 
-**Alternative - Direct Install:**
+2. Install the plugin:
+
 ```bash
-/plugin marketplace add quant-sentiment-ai/claude-equity-research
 /plugin install trading-ideas@claude-equity-research-marketplace
 ```
 
-**Verify Installation:**
+3. Verify the command is available:
+
 ```bash
-/help  # Confirm /trading-ideas:research command is listed
+/help
 ```
 
-**Start Analyzing:**
+### Codex Plugin Workflow
+
+Codex discovers the repository through the root plugin manifest:
+
+- `.codex-plugin/plugin.json`
+- `skills/equity-research/SKILL.md`
+
+Once the repository is available as a local plugin, Codex can use the `equity-research` skill when the user asks for:
+
+- an equity research report on a public company or ticker
+- a BUY, SELL, or HOLD recommendation with a price target
+- bull, base, and bear valuation scenarios
+- catalysts, risks, or institutional-style stock commentary
+
+## Usage Examples
+
+### Claude
+
 ```bash
 /trading-ideas:research AAPL
 /trading-ideas:research NVDA --detailed
 ```
 
-> Claude Code namespaces plugin commands as `<plugin-name>:<command-name>`, so the invocation is `/trading-ideas:research` (not the bare `/trading-ideas`). If you prefer the bare form, use the [manual install](#manual-installation-advanced) below — it copies the command file into your personal `~/.claude/commands/` and registers it as `/trading-ideas`.
+### Codex
 
-> 💡 **Tip**: Restart Claude Code after installation for best results.
+Example prompts:
 
-For comprehensive plugin documentation, see [PLUGIN.md](PLUGIN.md).
+- `Generate an institutional-grade equity research report for AAPL.`
+- `Analyze NVDA with bull, base, and bear valuation scenarios.`
+- `Compare TSLA fundamentals, catalysts, and risks.`
 
-<details>
-<summary><strong>Manual Installation (Advanced)</strong></summary>
+## Sample Output Shape
 
-### Quick Start
-
-1. **Install the /trading-ideas command** (system-wide):
-```bash
-mkdir -p ~/.claude/commands
-curl -o ~/.claude/commands/trading-ideas.md https://raw.githubusercontent.com/quant-sentiment-ai/claude-equity-research/main/commands/trading-ideas/commands/research.md
-```
-
-2. **Basic usage**:
-```bash
-/trading-ideas AAPL
-```
-
-3. **Enhanced analysis**:
-```bash
-/trading-ideas HOOD --detailed
-```
-
-### Manual Setup via Git Clone
-
-1. **Clone the repository**:
-```bash
-git clone https://github.com/quant-sentiment-ai/claude-equity-research.git
-cd claude-equity-research
-```
-
-2. **Copy command to Claude Code**:
-```bash
-cp commands/trading-ideas/commands/research.md ~/.claude/commands/trading-ideas.md
-```
-
-</details>
-
-## Usage Examples
-
-> Examples below use the plugin install invocation (`/trading-ideas:research`). If you followed the manual install path, drop the `:research` suffix and use the bare `/trading-ideas` form.
-
-### Basic Equity Analysis
-```bash
-/trading-ideas:research AAPL
-```
-**Output**: Comprehensive institutional research report with BUY/SELL/HOLD recommendation
-
-### Technology Sector Analysis
-```bash
-/trading-ideas:research NVDA
-```
-**Features**: AI/semiconductor sector positioning, relative valuation vs peers
-
-### Financial Services Analysis
-```bash
-/trading-ideas:research JPM
-```
-**Includes**: Interest rate sensitivity, regulatory environment, book value analysis
-
-### Growth Stock Analysis
-```bash
-/trading-ideas:research TSLA
-```
-**Focus**: Growth metrics, competitive positioning, volatility assessment
-
-## Sample Output Format
-
-```
-# APPLE INC (AAPL) - ENHANCED EQUITY RESEARCH
+```markdown
+# APPLE INC. (AAPL) - ENHANCED EQUITY RESEARCH
 
 ## EXECUTIVE SUMMARY
-BUY with $250 price target (9% upside) over 12 months. Strong Q4 2024 
-results driven by iPhone 16 launch and AI integration provide foundation 
-for premium product cycle. Balanced risk-reward with established ecosystem moat.
+BUY with a defined price target, timeframe, core thesis, and risk-reward framing.
 
 ## FUNDAMENTAL ANALYSIS
-Q4 2024: Revenue $94.9B (+6% YoY), EPS $1.64 (+12% YoY). iPhone revenue 
-$46.2B (~49% of total), Services +12% to $25B with recurring characteristics.
+Recent financial metrics, peer comparison, and forward outlook.
+
+## CATALYST ANALYSIS
+Near-term, medium-term, and event-driven catalysts.
 
 ## VALUATION & PRICE TARGETS
-Consensus: $242 (range $200-$280)
-Bull case: $280 | Base case: $250 | Bear case: $200
-Probability weighting: 25%/55%/20%
+Bull, base, and bear cases with probability weighting.
 
-## RECOMMENDATION: BUY | Conviction: High | Price Target: $250
+## RISK ASSESSMENT
+Company risks, macro risks, ESG context, and position sizing.
+
+## TECHNICAL CONTEXT & OPTIONS INTELLIGENCE
+Price context, support/resistance, momentum, and options flow.
+
+## MARKET POSITIONING
+Sector and benchmark relative strength.
+
+## INSIDER SIGNALS
+Insider transactions, buybacks, and ownership changes.
 ```
-
-## Command Reference
-
-| Command | Description | Output |
-|---------|-------------|---------|
-| `/trading-ideas:research <TICKER>` | Standard institutional analysis | 8-section comprehensive report |
-| `/trading-ideas:research <TICKER> --detailed` | Enhanced analysis with options flow | Extended technical and insider analysis |
-| `/trading-ideas:research --help` | Show usage information | Command documentation |
 
 ## Repository Structure
 
-```
-claude-equity-research/
-├── README.md                     # This file
-├── LICENSE                       # MIT License
+```text
+codex-equity-research-plugin/
+├── .claude-plugin/
+│   └── marketplace.json
+├── .codex-plugin/
+│   └── plugin.json
 ├── commands/
-│   ├── trading-ideas/            # Plugin directory (installed via marketplace)
-│   │   ├── .claude-plugin/
-│   │   │   └── plugin.json       # Plugin manifest
-│   │   └── commands/
-│   │       └── research.md       # Slash command (invoked as /trading-ideas:research)
-│   └── README.md                 # Command documentation
+│   ├── README.md
+│   └── trading-ideas/
+│       ├── .claude-plugin/
+│       │   └── plugin.json
+│       └── commands/
+│           └── research.md
 ├── config/
-│   ├── config.example.json       # Template configuration
-│   └── prompts/                  # Analysis prompt templates
-├── examples/
-│   └── sample_reports/           # Example analyses (AAPL, HOOD, etc.)
+│   └── config.example.json
 ├── docs/
-│   ├── methodology.md            # Detailed analysis framework
-│   ├── installation.md           # Setup instructions
-│   └── customization.md          # Customization guide
-├── utils/
-│   ├── data_sources.md           # Data source documentation
-│   └── validation.py             # Analysis validation tools
-└── tests/
-    └── test_command.py           # Command functionality tests
+├── examples/
+├── i18n/
+│   ├── README.zh-Hans.md
+│   └── README.zh-Hant.md
+├── skills/
+│   └── equity-research/
+│       └── SKILL.md
+├── LICENSE
+├── PLUGIN.md
+├── README.md
+└── SECURITY.md
 ```
 
-## Analysis Methodology
+## Notes for Maintainers
 
-Our research framework combines:
-
-### Quantitative Analysis
-- **Financial Statements**: Revenue, margins, cash flow analysis
-- **Valuation Models**: Multiple approaches (DCF, comparable company, precedent transaction)
-- **Technical Indicators**: Support/resistance, momentum, relative strength
-- **Options Analytics**: Implied volatility, unusual activity, sentiment indicators
-
-### Qualitative Assessment
-- **Competitive Positioning**: Market share, competitive advantages, moat analysis
-- **Management Quality**: Track record, capital allocation, strategic vision
-- **Regulatory Environment**: Industry-specific risks, compliance issues
-- **ESG Factors**: Environmental, social, governance considerations
-
-### Risk Management
-- **Scenario Analysis**: Bull/base/bear cases with probability weighting
-- **Position Sizing**: Risk-adjusted allocation recommendations (1-5% typical)
-- **Stop-Loss Guidance**: Downside protection levels
-- **Correlation Analysis**: Portfolio diversification considerations
-
-## Data Sources
-
-- **Financial Data**: SEC filings, earnings reports, company guidance
-- **Market Data**: Real-time pricing, volume, technical indicators
-- **Analyst Coverage**: Wall Street research, price target updates
-- **News & Sentiment**: Financial media, regulatory announcements
-- **Options Data**: Unusual activity, implied volatility, positioning
-- **Insider Activity**: Form 4 filings, executive transactions
-
-## Professional Disclaimers
-
-### ⚠️ Important Legal Notice
-
-This tool is designed for **educational and research purposes only**. All analysis and recommendations are:
-
-- **Not financial advice** - For informational purposes only
-- **Not personalized** - Does not consider individual circumstances
-- **Historical data based** - Past performance doesn't guarantee future results
-- **Requiring due diligence** - Users must conduct independent research
-- **Risk warning included** - All investments carry risk of loss
-
-### Risk Warnings
-- Stock prices are volatile and unpredictable
-- AI analysis may contain errors or biases
-- Market conditions change rapidly
-- Regulatory and company-specific risks may not be fully captured
-- Position sizing recommendations are general guidelines only
-
-### Professional Consultation
-Always consult with qualified financial professionals before making investment decisions. This tool does not replace professional financial advice.
-
-## Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md):
-
-### Development Areas
-- Enhanced data source integration
-- Improved technical analysis algorithms
-- Additional sector-specific metrics
-- ESG scoring improvements
-- Risk model enhancements
-
-### Code Contributions
-```bash
-# Fork the repository
-git fork https://github.com/quant-sentiment-ai/claude-equity-research
-
-# Create feature branch
-git checkout -b feature/your-enhancement
-
-# Submit pull request with detailed description
-```
+- Keep the Claude command prompt and Codex skill aligned when the research workflow changes.
+- Preserve both integration paths unless the project explicitly drops one host.
+- Avoid embedding machine-specific local paths in repository files or plugin metadata.
+- Keep documentation in English as the source of truth, then sync the two translated README files under `i18n/`.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
----
+## Support
 
-**Remember**: This tool provides educational insights only. Always conduct your own due diligence and consult qualified financial professionals before making investment decisions. Past performance does not guarantee future results.
+- [Plugin documentation](PLUGIN.md)
+- [Command documentation](commands/README.md)
+- [Project documentation](docs/)
+- [Security policy](SECURITY.md)
+
+This project is for educational and research purposes only and is not financial advice. Always perform independent due diligence before making investment decisions.
